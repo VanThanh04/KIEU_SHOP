@@ -14,5 +14,3 @@ phong cách truyền thống nhưng muốn sự hiện đại, trẻ trung.
 
 ## Next Steps
 
-1. Gõ `/brainstorm` để explore thêm ý tưởng và nghiên cứu thị trường
-2. Hoặc `/plan` nếu đã rõ muốn làm gì
