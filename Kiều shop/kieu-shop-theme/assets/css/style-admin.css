@@ -1,0 +1,762 @@
+/* ============================================================
+   style-admin.css — KIỀU Admin Panel
+   ============================================================ */
+
+/* Layout */
+.kieu-admin-wrap {
+    display: flex;
+    min-height: 100vh;
+    background: #F5F4F2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ── SIDEBAR ── */
+.kieu-admin-sidebar {
+    width: 240px;
+    background: #1A1A1A;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.kad-brand {
+    padding: 2rem 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kad-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #C9A96E;
+    letter-spacing: 0.15em;
+}
+
+.kad-role {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+}
+
+.kad-nav {
+    flex: 1;
+    padding: 1rem 0;
+}
+
+.kad-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.kad-nav-item:hover,
+.kad-nav-item.is-active {
+    background: rgba(255, 255, 255, 0.06);
+    color: #C9A96E;
+    border-left-color: #C9A96E;
+}
+
+.kad-footer-links {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 0;
+}
+
+.kad-logout {
+    color: rgba(255, 100, 100, 0.7) !important;
+}
+
+.kad-logout:hover {
+    color: #ff6b6b !important;
+}
+
+/* ── MAIN ── */
+.kieu-admin-main {
+    margin-left: 240px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.kad-topbar {
+    background: #fff;
+    border-bottom: 1px solid #E8E4DF;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.kad-sidebar-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #555;
+    display: none;
+    padding: 0.25rem;
+}
+
+.kad-page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1A1A1A;
+    flex: 1;
+    margin: 0;
+}
+
+.kad-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: #555;
+}
+
+.kad-avatar {
+    border-radius: 50%;
+}
+
+/* ── PANEL ── */
+.kad-panel {
+    flex: 1;
+    padding: 2rem;
+    max-width: 960px;
+}
+
+.kad-hint {
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background: #FFF8ED;
+    border-left: 3px solid #C9A96E;
+    border-radius: 4px;
+}
+
+/* ── NOTICE ── */
+.kad-notice {
+    margin: 1rem 2rem 0;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.kad-notice.success {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border-left: 3px solid #43A047;
+}
+
+.kad-notice.error {
+    background: #FFEBEE;
+    color: #C62828;
+    border-left: 3px solid #EF5350;
+}
+
+/* ── STATS ── */
+.kad-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.kad-stat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid #E8E4DF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: box-shadow 0.2s;
+}
+
+.kad-stat-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.kad-stat-card i {
+    font-size: 1.5rem;
+    color: #8C2020;
+}
+
+.kad-stat-num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+.kad-stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── SECTION ── */
+.kad-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: #1A1A1A;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #E8E4DF;
+}
+
+.kad-form-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #E8E4DF;
+    margin-bottom: 1.5rem;
+}
+
+/* ── FIELDS ── */
+.kad-field {
+    margin-bottom: 1.25rem;
+}
+
+.kad-field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #444;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+}
+
+.kad-input,
+.kad-textarea {
+    width: 100%;
+    padding: 0.65rem 0.875rem;
+    border: 1px solid #DDD;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.88rem;
+    color: #1A1A1A;
+    background: #FAFAFA;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.kad-input:focus,
+.kad-textarea:focus {
+    outline: none;
+    border-color: #C9A96E;
+    background: #fff;
+}
+
+.kad-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ── BUTTONS ── */
+.kad-btn-primary {
+    background: #1A1A1A;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.kad-btn-primary:hover {
+    background: #8C2020;
+    color: #fff;
+}
+
+.kad-btn-outline {
+    background: transparent;
+    color: #1A1A1A;
+    border: 1px solid #CCC;
+    padding: 0.65rem 1.25rem;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.kad-btn-outline:hover {
+    border-color: #C9A96E;
+    color: #C9A96E;
+}
+
+.kad-btn-sm {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    background: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.15s;
+}
+
+.kad-btn-sm:hover {
+    border-color: #8C2020;
+    color: #8C2020;
+}
+
+.kad-btn-danger {
+    border-color: #EF5350;
+    color: #EF5350;
+}
+
+.kad-btn-danger:hover {
+    background: #EF5350;
+    color: #fff;
+    border-color: #EF5350;
+}
+
+.kad-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* ── QUICK LINKS ── */
+.kad-quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* ── TABLE ── */
+.kad-table-header {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kad-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E8E4DF;
+}
+
+.kad-table th {
+    background: #F5F4F2;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #666;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #E8E4DF;
+}
+
+.kad-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid #F0EDED;
+    font-size: 0.85rem;
+    color: #333;
+    vertical-align: middle;
+}
+
+.kad-table tr:last-child td {
+    border-bottom: none;
+}
+
+.kad-table tr:hover td {
+    background: #FAFAF8;
+}
+
+.kad-list-thumb {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.kad-actions-col {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+/* ── MEDIA ── */
+.kad-media-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.kad-media-preview {
+    width: 100px;
+    height: 70px;
+    background: #F0EDED;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kad-media-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.kad-upload-zone {
+    border: 2px dashed #CCC;
+    border-radius: 10px;
+    padding: 2.5rem;
+    text-align: center;
+    background: #FAFAFA;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    margin-bottom: 1rem;
+}
+
+.kad-upload-zone:hover,
+.kad-upload-zone.drag-over {
+    border-color: #8C2020;
+    background: #FFF5F5;
+}
+
+.kad-upload-zone p {
+    color: #888;
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+}
+
+.kad-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+}
+
+.kad-media-item {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #E8E4DF;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.kad-media-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.kad-media-item img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+.kad-media-item-url {
+    font-size: 0.6rem;
+    color: #888;
+    padding: 0.2rem 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── VIP CARDS ── */
+.kad-vip-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #E8E4DF;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+}
+
+.kad-vip-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-bottom: 1px solid #F0EDED;
+}
+
+.kad-vip-avatar {
+    border-radius: 50%;
+}
+
+.kad-vip-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.kad-vip-info strong {
+    font-size: 0.95rem;
+    color: #1A1A1A;
+}
+
+.kad-vip-info span {
+    font-size: 0.78rem;
+    color: #888;
+}
+
+.kad-vip-spend strong {
+    color: #8C2020;
+}
+
+.kad-vip-crown {
+    background: linear-gradient(135deg, #C9A96E, #E8D5A0);
+    color: #6B4C1E;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+}
+
+.kad-vip-orders {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #F0EDED;
+}
+
+.kad-vip-order-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #555;
+    padding: 0.3rem 0;
+}
+
+.kad-vip-notes {
+    padding: 1rem 1.25rem;
+}
+
+.kad-note-item {
+    background: #FAFAF8;
+    border-radius: 6px;
+    padding: 0.6rem 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.kad-note-by {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #8C2020;
+    margin-right: 0.5rem;
+}
+
+.kad-note-time {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+.kad-note-item p {
+    font-size: 0.83rem;
+    color: #444;
+    margin: 0.3rem 0 0;
+}
+
+.kad-add-note {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-top: 0.75rem;
+}
+
+.kad-add-note .kad-textarea {
+    flex: 1;
+    min-height: 56px;
+}
+
+.kad-note-add {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-top: 0.75rem;
+}
+
+.kad-add-note .kad-textarea {
+    flex: 1;
+    min-height: 56px;
+}
+
+/* ── STATUS BADGE ── */
+.kad-status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.kad-status-badge.active {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.kad-status-badge.draft {
+    background: #F5F5F5;
+    color: #999;
+}
+
+/* ── INLINE PRODUCT EDITOR ── */
+.kad-product-edit-row td {
+    background: #FAFAF8;
+    border-top: 2px solid #C9A96E !important;
+}
+
+.kad-inline-editor {
+    padding: 1.5rem;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.kad-inline-grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.kad-inline-prices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.kad-inline-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #E8E4DF;
+}
+
+/* Product thumbnail preview */
+.kad-product-thumb-preview {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #F0EDED;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kad-product-thumb-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.kad-thumb-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #CCC;
+}
+
+.kad-thumb-placeholder i {
+    font-size: 2.5rem;
+}
+
+.kad-thumb-placeholder span {
+    font-size: 0.75rem;
+}
+
+.kad-thumb-placeholder.hidden {
+    display: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .kieu-admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .kieu-admin-sidebar.is-open {
+        transform: translateX(0);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .kieu-admin-main {
+        margin-left: 0;
+    }
+
+    .kad-sidebar-toggle {
+        display: block;
+    }
+
+    .kad-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kad-panel {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .kad-stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .kad-topbar {
+        padding: 0.75rem 1rem;
+    }
+}

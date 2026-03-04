@@ -1,0 +1,301 @@
+{
+    "meta": {
+        "schema_version": "1.1.0",
+        "awf_version": "4.0.2",
+        "last_updated": "2026-03-04T14:22:00+07:00",
+        "project_root": "C:\\Users\\Ziczac Computer\\Downloads\\New folder\\Test\\Kiều shop"
+    },
+    "project": {
+        "name": "KIỀU Shop",
+        "type": "WordPress WooCommerce Theme",
+        "status": "active_development",
+        "brand": "KIỀU - Áo dài cách tân cao cấp (Luxury Vietnamese Fashion)",
+        "local_url": "http://localhost",
+        "admin_panel_url": "http://localhost/quan-tri",
+        "theme_slug": "kieu-shop-theme",
+        "wp_admin_url": "http://localhost/wp-admin"
+    },
+    "tech_stack": {
+        "platform": "WordPress 6.x",
+        "ecommerce": "WooCommerce",
+        "language": "PHP 8.x",
+        "frontend": {
+            "css": "Vanilla CSS (style.css + style-admin.css)",
+            "js": "jQuery (admin.js + front-page.js)",
+            "fonts": "Cormorant Garamond (serif), Inter (sans)",
+            "icons": "Font Awesome 6 Pro"
+        },
+        "ajax": "WordPress AJAX API (admin-ajax.php)",
+        "payment": "VNPay (integrated in checkout page)",
+        "media": "WordPress Media Library + custom AJAX upload fallback"
+    },
+    "directory_structure": {
+        "theme_root": "C:\\Users\\Ziczac Computer\\Downloads\\New folder\\Test\\Kiều shop\\kieu-shop-theme\\",
+        "key_files": {
+            "page_admin": "page-admin.php",
+            "functions": "functions.php",
+            "single_product": "single-product.php",
+            "front_page": "front-page.php",
+            "archive_product": "archive-product.php",
+            "archive_lookbook": "archive-lookbook.php",
+            "header": "header.php",
+            "footer": "footer.php",
+            "style_admin_css": "assets/css/style-admin.css",
+            "admin_js": "assets/js/admin.js"
+        }
+    },
+    "roles_and_capabilities": {
+        "summary": "RBAC system with 2 custom roles + WP Administrator fallback",
+        "roles": {
+            "kieu_admin": {
+                "label": "KIỀU Admin",
+                "capabilities": [
+                    "kieu_view_admin_panel",
+                    "kieu_edit_homepage",
+                    "kieu_edit_lookbook",
+                    "kieu_edit_banners",
+                    "kieu_edit_products",
+                    "kieu_vip_support",
+                    "kieu_manage_settings"
+                ]
+            },
+            "kieu_sub_admin": {
+                "label": "KIỀU Sub-Admin",
+                "capabilities": [
+                    "kieu_view_admin_panel",
+                    "kieu_edit_lookbook",
+                    "kieu_edit_banners",
+                    "kieu_vip_support"
+                ],
+                "note": "Can only edit Lookbook + Banner, support VIP customers"
+            },
+            "wp_administrator": {
+                "note": "has manage_options → treated as $is_super, can access ALL tabs"
+            }
+        },
+        "is_super_check": "$current_user->has_cap('manage_options') || $current_user->has_cap('kieu_edit_homepage')"
+    },
+    "admin_panel": {
+        "slug": "/quan-tri",
+        "page_template": "page-admin.php",
+        "tabs": [
+            {
+                "id": "dashboard",
+                "label": "Tổng quan",
+                "access": "all"
+            },
+            {
+                "id": "homepage",
+                "label": "Trang chủ",
+                "access": "is_super || kieu_edit_homepage"
+            },
+            {
+                "id": "lookbook",
+                "label": "Lookbook",
+                "access": "is_super || kieu_edit_lookbook"
+            },
+            {
+                "id": "banners",
+                "label": "Banner & Media",
+                "access": "is_super || kieu_edit_banners"
+            },
+            {
+                "id": "products",
+                "label": "Sản phẩm",
+                "access": "is_super || kieu_edit_products"
+            },
+            {
+                "id": "vip",
+                "label": "VIP Support",
+                "access": "is_super || kieu_vip_support"
+            },
+            {
+                "id": "settings",
+                "label": "Cài đặt",
+                "access": "is_super || kieu_manage_settings"
+            }
+        ],
+        "important_rules": [
+            "ALL tab elseif conditions MUST include ($is_super || ...) to allow WP Admin access",
+            "wp_enqueue_media() is called directly in page-admin.php before get_header()",
+            "CSS and JS are re-enqueued via add_action('wp_enqueue_scripts', fn, priority=5) in page-admin.php",
+            "kieuAdminData localized object provides: ajaxUrl, nonce, siteUrl"
+        ]
+    },
+    "ajax_handlers": {
+        "summary": "All AJAX handlers in functions.php, use nonce: kieu_admin_nonce",
+        "handlers": [
+            {
+                "action": "kieu_save_option",
+                "description": "Save any whitelisted WP option (text, image URL)",
+                "capability_check": "kieu_view_admin_panel",
+                "allowed_keys": [
+                    "kieu_hero_title",
+                    "kieu_hero_subtitle",
+                    "kieu_hero_image_1",
+                    "kieu_hero_image_2",
+                    "kieu_hero_image_3",
+                    "kieu_intro_text",
+                    "kieu_intro_image",
+                    "kieu_banner_text",
+                    "kieu_banner_image",
+                    "kieu_phone",
+                    "kieu_address",
+                    "kieu_facebook",
+                    "kieu_instagram",
+                    "kieu_bank_name",
+                    "kieu_bank_number",
+                    "kieu_bank_holder",
+                    "kieu_size_guide_image",
+                    "kieu_size_guide_note"
+                ]
+            },
+            {
+                "action": "kieu_upload_media",
+                "description": "Upload file to WP Media Library, returns URL + attachment_id",
+                "capability_check": "kieu_view_admin_panel"
+            },
+            {
+                "action": "kieu_save_lookbook",
+                "description": "Create or update Lookbook custom post type",
+                "capability_check": "kieu_edit_lookbook"
+            },
+            {
+                "action": "kieu_delete_lookbook",
+                "description": "Trash a Lookbook post",
+                "capability_check": "kieu_edit_lookbook"
+            },
+            {
+                "action": "kieu_save_product",
+                "description": "Create (product_id=0) or update WooCommerce product. Fields: name, price, sale_price, stock, description, status, thumbnail_id",
+                "capability_check": "kieu_edit_products",
+                "note": "product_id=0 creates new WC_Product_Simple. Returns product_id in response."
+            },
+            {
+                "action": "kieu_save_vip_note",
+                "description": "Save VIP customer care note (stored in user meta: kieu_vip_notes)",
+                "capability_check": "kieu_vip_support"
+            }
+        ]
+    },
+    "known_issues_and_fixes": [
+        {
+            "issue": "wp.media crashes on frontend with 'activeMode is not a function'",
+            "cause": "JS conflict between media-views.min.js and other scripts",
+            "fix": "Wrap wp.media() call in try-catch. On catch, use static file input fallback (#kadProductImageInput, #kadGeneralImageInput)",
+            "pattern": "openMediaPicker() helper function in admin.js handles this"
+        },
+        {
+            "issue": "Admin panel tabs show blank page for WP Administrator",
+            "cause": "Tab conditions only checked custom capabilities, not manage_options",
+            "fix": "All elseif conditions must be: ($is_super || $current_user->has_cap('kieu_XXX'))",
+            "affected_tabs": [
+                "homepage",
+                "lookbook",
+                "banners",
+                "products",
+                "vip",
+                "settings"
+            ]
+        },
+        {
+            "issue": "Media grid empty even with images in WP Media",
+            "cause": "post_mime_type value 'image,video' was too restrictive or wrong format",
+            "fix": "Use post_mime_type => 'image' (prefix match) + post_status => 'inherit'"
+        }
+    ],
+    "features": [
+        {
+            "name": "Frontend Admin Panel",
+            "status": "complete",
+            "url": "/quan-tri",
+            "description": "Branded frontend admin panel replacing WP Admin for day-to-day management"
+        },
+        {
+            "name": "Product Inline Editor",
+            "status": "complete",
+            "description": "Edit product name/price/stock/desc/status/image directly from products tab"
+        },
+        {
+            "name": "Add New Product",
+            "status": "complete",
+            "description": "Create WooCommerce product from admin panel (product_id=0 creates new)"
+        },
+        {
+            "name": "Media Uploader",
+            "status": "complete",
+            "description": "Drag+drop or file select upload to WP Media. Falls back to file input when wp.media fails"
+        },
+        {
+            "name": "Size Guide Modal",
+            "status": "complete",
+            "description": "Popup on product pages when clicking 'Hướng dẫn chọn size'. Shows uploaded image or default size table. Managed via Settings tab."
+        },
+        {
+            "name": "Lookbook CRUD",
+            "status": "complete",
+            "description": "Create/edit/delete Lookbook posts from admin panel"
+        },
+        {
+            "name": "RBAC",
+            "status": "complete",
+            "description": "2 custom roles (kieu_admin, kieu_sub_admin) + WP Admin fallback via $is_super"
+        },
+        {
+            "name": "VIP Customer Support",
+            "status": "complete",
+            "description": "View VIP customers (annual spend > 5M VND), add care notes"
+        },
+        {
+            "name": "Settings Manager",
+            "status": "complete",
+            "description": "Edit contact info, social links, bank account, size guide image/notes"
+        }
+    ],
+    "business_rules": [
+        "VIP threshold: annual spend >= 5,000,000 VND",
+        "Sub-Admin can ONLY edit Lookbook, Banner, and support VIP customers",
+        "WP Administrator ($is_super) has access to all admin panel sections",
+        "Product create: product_id=0 in AJAX creates new WC_Product_Simple",
+        "Size Guide: if kieu_size_guide_image is set, show image; else show default XS-XL table"
+    ],
+    "wp_options_used": {
+        "homepage": [
+            "kieu_hero_title",
+            "kieu_hero_subtitle",
+            "kieu_hero_image_1",
+            "kieu_hero_image_2",
+            "kieu_hero_image_3",
+            "kieu_intro_text",
+            "kieu_intro_image"
+        ],
+        "banner": [
+            "kieu_banner_text",
+            "kieu_banner_image"
+        ],
+        "contact": [
+            "kieu_phone",
+            "kieu_address",
+            "kieu_facebook",
+            "kieu_instagram"
+        ],
+        "bank": [
+            "kieu_bank_name",
+            "kieu_bank_number",
+            "kieu_bank_holder"
+        ],
+        "size_guide": [
+            "kieu_size_guide_image",
+            "kieu_size_guide_note"
+        ]
+    },
+    "js_patterns": {
+        "openMediaPicker": "Universal helper in admin.js that tries wp.media first (with try-catch), then falls back to static file input + AJAX upload",
+        "static_file_inputs": {
+            "#kadProductImageInput": "For product inline editor thumbnail",
+            "#kadGeneralImageInput": "For banner, homepage, lookbook, and settings image pickers"
+        },
+        "nonce_var": "NONCE (from kieuAdminData.nonce)",
+        "ajax_var": "AJAX (from kieuAdminData.ajaxUrl)"
+    }
+}

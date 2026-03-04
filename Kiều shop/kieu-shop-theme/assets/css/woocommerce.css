@@ -1,0 +1,913 @@
+/**
+ * woocommerce.css — Kiều Shop
+ * Override các style mặc định của WooCommerce để phù hợp với giao diện Kiều Shop
+ */
+
+/* =============================================
+   Remove WooCommerce defaults
+   ============================================= */
+.woocommerce-breadcrumb,
+.woocommerce-notices-wrapper:empty,
+.woocommerce .woocommerce-info,
+.woocommerce-page .woocommerce-info {
+    display: none;
+}
+
+/* =============================================
+   Messages / Notices
+   ============================================= */
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+    border-top: 3px solid var(--color-primary) !important;
+    background: var(--color-primary-light) !important;
+    color: var(--color-text) !important;
+    font-size: 0.85rem !important;
+    padding: 12px 16px !important;
+    border-radius: 0 !important;
+}
+
+.woocommerce-message a.button,
+.woocommerce-error a.button {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border-radius: 0 !important;
+    padding: 8px 20px !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+/* =============================================
+   Cart Page
+   ============================================= */
+.woocommerce table.shop_table {
+    border: 1px solid var(--color-border) !important;
+    border-collapse: collapse !important;
+    font-size: 0.9rem !important;
+}
+
+.woocommerce table.shop_table th {
+    font-family: var(--font-body) !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    border-bottom: 2px solid var(--color-primary) !important;
+    padding: 12px !important;
+    background: var(--color-bg) !important;
+    color: var(--color-text) !important;
+}
+
+.woocommerce table.shop_table td {
+    border: 1px solid var(--color-border) !important;
+    padding: 12px !important;
+    vertical-align: middle !important;
+}
+
+.woocommerce a.remove {
+    color: var(--color-primary) !important;
+    font-size: 1.2rem !important;
+}
+
+.woocommerce a.remove:hover {
+    color: #6B1818 !important;
+}
+
+/* Cart totals */
+.woocommerce .cart-collaterals .cart_totals {
+    background: var(--color-bg) !important;
+    border: 1px solid var(--color-border) !important;
+    padding: 1.5rem !important;
+}
+
+.woocommerce .cart-collaterals h2 {
+    font-family: var(--font-display) !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 0.1em !important;
+    border-bottom: 1px solid var(--color-gold) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* =============================================
+   Checkout Page
+   ============================================= */
+.woocommerce form .form-row label {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    color: var(--color-text) !important;
+    margin-bottom: 5px !important;
+    display: block !important;
+}
+
+.woocommerce form .form-row input,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select {
+    border: 1.5px solid var(--color-border) !important;
+    border-radius: 0 !important;
+    padding: 10px 12px !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    width: 100% !important;
+    outline: none !important;
+    transition: border-color 0.3s ease !important;
+    background: var(--color-white) !important;
+}
+
+.woocommerce form .form-row input:focus,
+.woocommerce form .form-row textarea:focus {
+    border-color: var(--color-primary) !important;
+}
+
+/* =============================================
+   Buttons (WooCommerce)
+   ============================================= */
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #place_order {
+    background: var(--color-primary) !important;
+    color: white !important;
+    border: 2px solid var(--color-primary) !important;
+    border-radius: 0 !important;
+    padding: 13px 28px !important;
+    font-size: 0.75rem !important;
+    font-family: var(--font-body) !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #place_order:hover {
+    background: transparent !important;
+    color: var(--color-primary) !important;
+}
+
+/* =============================================
+   My Account Page
+   ============================================= */
+.woocommerce-account .woocommerce-MyAccount-navigation {
+    width: 220px !important;
+    float: left !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+    border: 1px solid var(--color-border) !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li {
+    border-bottom: 1px solid var(--color-border) !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li a {
+    display: block !important;
+    padding: 12px 16px !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.05em !important;
+    color: var(--color-text) !important;
+    transition: color 0.3s ease !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul li.is-active a,
+.woocommerce-account .woocommerce-MyAccount-navigation ul li a:hover {
+    color: var(--color-primary) !important;
+    font-weight: 600 !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+    float: right !important;
+    width: calc(100% - 250px) !important;
+}
+
+/* =============================================
+   Order Table
+   ============================================= */
+.woocommerce table.woocommerce-orders-table th {
+    background: var(--color-primary) !important;
+    color: white !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    padding: 10px 12px !important;
+}
+
+/* =============================================
+   Product Star Rating
+   ============================================= */
+.woocommerce .star-rating span::before,
+.woocommerce .star-rating::before {
+    color: var(--color-gold) !important;
+}
+
+/* =============================================
+   Price
+   ============================================= */
+.woocommerce .price {
+    color: var(--color-primary) !important;
+    font-weight: 700 !important;
+}
+
+.woocommerce del {
+    color: var(--color-text-muted) !important;
+    opacity: 1 !important;
+}
+
+/* =============================================
+   PHASE 03 — Checkout Layout & Payment
+   ============================================= */
+
+/* Checkout header */
+.kieu-checkout-header {
+    text-align: center;
+    padding: 3rem 1rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 2-column checkout layout: Form (left) | Order review (right) */
+.kieu-checkout-page .woocommerce {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+}
+
+.kieu-checkout-page .woocommerce>form.checkout {
+    display: grid !important;
+    grid-template-columns: 1fr 420px !important;
+    gap: 3rem !important;
+    align-items: start !important;
+}
+
+/* Section headings inside checkout */
+.woocommerce .woocommerce-billing-fields h3,
+.woocommerce .woocommerce-shipping-fields h3,
+.woocommerce #order_review_heading {
+    font-family: var(--font-display) !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid var(--color-gold) !important;
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+    color: var(--color-text) !important;
+}
+
+/* Order review box */
+.woocommerce #order_review {
+    background: var(--color-bg) !important;
+    border: 1px solid var(--color-border) !important;
+    padding: 2rem !important;
+}
+
+/* =============================================
+   Payment Methods
+   ============================================= */
+.woocommerce-checkout #payment {
+    background: var(--color-bg) !important;
+    border-radius: 0 !important;
+    border: 1px solid var(--color-border) !important;
+    padding: 1.5rem !important;
+}
+
+.woocommerce-checkout #payment ul.payment_methods {
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li {
+    border-bottom: 1px solid var(--color-border) !important;
+    padding: 1rem 0 !important;
+    list-style: none !important;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li:last-child {
+    border-bottom: none !important;
+}
+
+/* Radio + label alignment */
+.woocommerce-checkout #payment ul.payment_methods li label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em !important;
+    cursor: pointer !important;
+    color: var(--color-text) !important;
+}
+
+/* Custom radio */
+.woocommerce-checkout #payment ul.payment_methods input[type="radio"] {
+    accent-color: var(--color-primary) !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+}
+
+/* VNPay label highlight */
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_vnpay label,
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_vnpayqr label {
+    color: var(--color-teal) !important;
+}
+
+/* Payment method description box */
+.woocommerce-checkout #payment .payment_box {
+    background: var(--color-primary-light) !important;
+    border-left: 3px solid var(--color-primary) !important;
+    border-radius: 0 !important;
+    font-size: 0.85rem !important;
+    color: var(--color-text-muted) !important;
+    padding: 12px !important;
+    margin-top: 8px !important;
+}
+
+/* VNPay payment box: teal accent */
+.payment_method_vnpay .payment_box,
+.payment_method_vnpayqr .payment_box {
+    background: rgba(45, 107, 122, 0.06) !important;
+    border-left-color: var(--color-teal) !important;
+}
+
+/* Place order button */
+#place_order {
+    width: 100% !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.25em !important;
+    padding: 16px !important;
+}
+
+/* =============================================
+   Bank Transfer Info Box (Thank-you page)
+   ============================================= */
+.kieu-bank-info {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-teal);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    max-width: 520px;
+}
+
+.kieu-bank-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kieu-bank-info h3 i {
+    color: var(--color-teal);
+}
+
+.kieu-bank-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.kieu-bank-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.kieu-bank-table td:first-child {
+    color: var(--color-text-muted);
+    width: 40%;
+}
+
+.kieu-bank-note {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.6;
+}
+
+.kieu-bank-note i {
+    color: var(--color-teal);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* =============================================
+   Thank-you Page  
+   ============================================= */
+.woocommerce-thankyou-order-received {
+    font-family: var(--font-display) !important;
+    font-size: 1.3rem !important;
+    color: var(--color-sage) !important;
+    font-style: italic !important;
+}
+
+.woocommerce-order-overview {
+    background: var(--color-bg) !important;
+    border: 1px solid var(--color-border) !important;
+    padding: 1.5rem !important;
+    display: flex !important;
+    gap: 2rem !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 2rem !important;
+}
+
+.woocommerce-order-overview li {
+    font-size: 0.85rem !important;
+    color: var(--color-text-muted) !important;
+    list-style: none !important;
+}
+
+.woocommerce-order-overview li strong {
+    display: block !important;
+    font-size: 1rem !important;
+    color: var(--color-primary) !important;
+    margin-top: 4px !important;
+}
+
+/* =============================================
+   Cart Page Enhancements
+   ============================================= */
+.kieu-cart-page .woocommerce {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+/* Proceed to checkout button on cart */
+.woocommerce .checkout-button {
+    background: var(--color-primary) !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+/* Cart page input quantity */
+.woocommerce table.shop_table .qty {
+    width: 60px !important;
+    text-align: center !important;
+}
+
+/* Update cart button */
+.woocommerce table.shop_table .actions .button[name="update_cart"] {
+    background: transparent !important;
+    color: var(--color-primary) !important;
+    border: 1.5px solid var(--color-primary) !important;
+}
+
+/* =============================================
+   Responsive Checkout
+   ============================================= */
+@media (max-width: 768px) {
+    .kieu-checkout-page .woocommerce>form.checkout {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* =============================================
+   PHASE 02.5 — Auth & Account Page
+   ============================================= */
+
+/* ─── Login / Register Box ─── */
+.kieu-auth-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1rem 5rem;
+    background: var(--color-bg);
+    min-height: 70vh;
+}
+
+.kieu-auth-box {
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--color-border);
+    margin: 1.5rem 0;
+}
+
+.auth-tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.auth-tab-btn.is-active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+/* WP login form */
+.kieu-auth-box #loginform,
+.kieu-register-form {
+    text-align: left;
+}
+
+.kieu-auth-box #loginform label,
+.kieu-register-form label {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-text);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.kieu-auth-box #loginform input[type="text"],
+.kieu-auth-box #loginform input[type="password"],
+.kieu-register-form input {
+    width: 100%;
+    border: 1.5px solid var(--color-border);
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color var(--transition);
+    margin-bottom: 1rem;
+}
+
+.kieu-auth-box #loginform input:focus,
+.kieu-register-form input:focus {
+    border-color: var(--color-primary);
+}
+
+.kieu-auth-box #loginform input[type="submit"] {
+    width: 100%;
+    background: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+    padding: 13px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 0.5rem;
+}
+
+.kieu-auth-box #loginform input[type="submit"]:hover {
+    background: transparent;
+    color: var(--color-primary);
+}
+
+.auth-forgot {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: right;
+}
+
+.auth-forgot a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+}
+
+/* ─── Account Dashboard Layout ─── */
+.kieu-account-main {
+    background: var(--color-bg);
+    min-height: 70vh;
+}
+
+.kieu-account-wrap {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+    align-items: start;
+}
+
+/* Sidebar */
+.kieu-account-sidebar {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+}
+
+.kieu-account-avatar {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.account-avatar-img {
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+
+.account-greeting {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+}
+
+.account-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* VIP badge */
+.vip-badge {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    background: rgba(201, 169, 110, 0.12);
+    border: 1px solid var(--color-gold);
+    padding: 2px 8px;
+}
+
+/* Sidebar nav */
+.kieu-account-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.kieu-account-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    transition: background var(--transition), color var(--transition);
+}
+
+.kieu-account-nav-item i {
+    width: 16px;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.kieu-account-nav-item:hover,
+.kieu-account-nav-item.is-active {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.kieu-account-nav-item.is-active i,
+.kieu-account-nav-item:hover i {
+    color: var(--color-primary);
+}
+
+.kieu-vip-tab,
+.kieu-vip-tab i {
+    color: var(--color-gold) !important;
+}
+
+.kieu-vip-tab.is-active,
+.kieu-vip-tab:hover {
+    background: rgba(201, 169, 110, 0.1) !important;
+}
+
+.kieu-logout,
+.kieu-logout i {
+    color: var(--color-text-muted) !important;
+}
+
+.kieu-logout:hover {
+    color: var(--color-primary) !important;
+    background: var(--color-primary-light) !important;
+}
+
+/* ─── Content Panel ─── */
+.kieu-account-content {
+    min-height: 400px;
+}
+
+.kieu-account-panel {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+}
+
+.account-panel-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text);
+}
+
+/* Stats grid */
+.account-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.account-stat-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.account-stat-card i {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+/* Orders table */
+.kieu-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.kieu-orders-table th {
+    background: var(--color-bg);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.kieu-orders-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+
+.status-completed {
+    background: rgba(91, 140, 110, 0.15);
+    color: var(--color-sage);
+}
+
+.status-processing {
+    background: rgba(45, 107, 122, 0.12);
+    color: var(--color-teal);
+}
+
+.status-pending {
+    background: rgba(201, 169, 110, 0.15);
+    color: #8a6920;
+}
+
+.status-cancelled {
+    background: rgba(140, 32, 32, 0.1);
+    color: var(--color-primary);
+}
+
+.btn-view-order {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* VIP benefits grid */
+.vip-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.vip-benefit-item {
+    background: rgba(201, 169, 110, 0.06);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.vip-benefit-item i {
+    font-size: 1.8rem;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.vip-benefit-item h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+}
+
+.vip-benefit-item p {
+    font-size: 0.83rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* Edit account form */
+.kieu-edit-account-form .form-row {
+    margin-bottom: 1.25rem;
+}
+
+.kieu-edit-account-form label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--color-text);
+}
+
+.kieu-edit-account-form input {
+    width: 100%;
+    border: 1.5px solid var(--color-border);
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+.kieu-edit-account-form input:focus {
+    border-color: var(--color-primary);
+}
+
+/* ─── Responsive Account ─── */
+@media (max-width: 768px) {
+    .kieu-account-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .account-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .vip-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}

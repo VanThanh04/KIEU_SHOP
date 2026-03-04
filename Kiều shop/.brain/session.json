@@ -1,0 +1,147 @@
+{
+    "updated_at": "2026-03-04T14:22:00+07:00",
+    "working_on": {
+        "feature": "Admin Panel - All tabs functional",
+        "status": "complete",
+        "files": [
+            "kieu-shop-theme/page-admin.php",
+            "kieu-shop-theme/functions.php",
+            "kieu-shop-theme/assets/js/admin.js",
+            "kieu-shop-theme/assets/css/style-admin.css",
+            "kieu-shop-theme/single-product.php"
+        ],
+        "blockers": [],
+        "notes": "Media picker works via try-catch + static file input fallback. All tabs fixed to use ($is_super || cap_check)."
+    },
+    "pending_tasks": [
+        {
+            "task": "Verify 'Thay ảnh' button works after latest fix (try-catch)",
+            "priority": "high",
+            "notes": "Fixed activeMode crash, should now fall back to file input"
+        },
+        {
+            "task": "Upload actual size guide image for KIỀU brand",
+            "priority": "medium",
+            "notes": "Settings tab > Hướng dẫn chọn size section"
+        },
+        {
+            "task": "Upload hero/banner images via admin panel",
+            "priority": "medium",
+            "notes": "Trang chủ tab has hero image fields"
+        },
+        {
+            "task": "Add lookbook content",
+            "priority": "medium",
+            "notes": "Lookbook tab > Thêm mới"
+        },
+        {
+            "task": "Test inline product editor with real save",
+            "priority": "high",
+            "notes": "Click Sửa > edit fields > Lưu sản phẩm"
+        }
+    ],
+    "recent_changes": [
+        {
+            "timestamp": "2026-03-04T14:22:00+07:00",
+            "type": "fix",
+            "description": "Fixed Homepage and Lookbook tabs missing $is_super condition",
+            "files": [
+                "page-admin.php"
+            ]
+        },
+        {
+            "timestamp": "2026-03-04T13:00:00+07:00",
+            "type": "feature",
+            "description": "Size Guide popup modal on product pages + admin management in Settings tab",
+            "files": [
+                "single-product.php",
+                "page-admin.php",
+                "functions.php"
+            ]
+        },
+        {
+            "timestamp": "2026-03-04T12:30:00+07:00",
+            "type": "feature",
+            "description": "Thêm sản phẩm form in products tab with create-new product support",
+            "files": [
+                "page-admin.php",
+                "assets/js/admin.js",
+                "functions.php"
+            ]
+        },
+        {
+            "timestamp": "2026-03-04T11:00:00+07:00",
+            "type": "fix",
+            "description": "Banner tab was blank - missing $is_super check. Media grid post_mime_type fixed",
+            "files": [
+                "page-admin.php"
+            ]
+        },
+        {
+            "timestamp": "2026-03-04T10:30:00+07:00",
+            "type": "fix",
+            "description": "wp.media activeMode crash - fixed with try-catch, fallback to static file input",
+            "files": [
+                "assets/js/admin.js",
+                "page-admin.php"
+            ]
+        },
+        {
+            "timestamp": "2026-03-04T10:00:00+07:00",
+            "type": "fix",
+            "description": "Added wp_enqueue_media() and admin CSS/JS enqueue to page-admin.php",
+            "files": [
+                "page-admin.php"
+            ]
+        },
+        {
+            "timestamp": "2026-03-04T09:00:00+07:00",
+            "type": "feature",
+            "description": "Product inline editor (Sửa button) + save product via AJAX",
+            "files": [
+                "page-admin.php",
+                "assets/js/admin.js",
+                "functions.php",
+                "assets/css/style-admin.css"
+            ]
+        }
+    ],
+    "errors_encountered": [
+        {
+            "error": "wp.media 'this.activeMode is not a function'",
+            "cause": "JS conflict on frontend - media-views.min.js crashes",
+            "solution": "try-catch around wp.media() call; fallback to #kadProductImageInput click",
+            "resolved": true
+        },
+        {
+            "error": "Admin panel tabs blank for WP Administrator",
+            "cause": "elseif conditions only checked custom kieu_* capabilities",
+            "solution": "Added ($is_super || ...) to ALL tab conditions",
+            "resolved": true
+        },
+        {
+            "error": "Media grid empty despite images in WP Media",
+            "cause": "'image,video' not valid post_mime_type format",
+            "solution": "Changed to 'image' prefix match + post_status => 'inherit'",
+            "resolved": true
+        }
+    ],
+    "decisions_made": [
+        {
+            "decision": "wp.media try-catch with static file input fallback",
+            "reason": "Frontend wp.media has JS conflicts; file input approach always works"
+        },
+        {
+            "decision": "Two separate static file inputs: #kadProductImageInput and #kadGeneralImageInput",
+            "reason": "Prevents event handler conflicts between product picker and general picker"
+        },
+        {
+            "decision": "product_id=0 in kieu_save_product creates new product",
+            "reason": "Reuses existing AJAX handler instead of creating a separate create handler"
+        },
+        {
+            "decision": "Size Guide uses uploaded image OR default HTML table fallback",
+            "reason": "Zero configuration required; default table shows XS-XL size data immediately"
+        }
+    ]
+}
